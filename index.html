@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMJEST</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1A2A38">
+</head>
+<body>
+    <div class="container">
+        <img src="img/amjest-logo3.png" alt="AMJEST Logo" class="logo">
+        <h1>AMJEST</h1>
+        <p>Ingrese a los formularios de contenidos mínimos prioritarios</p>
+        <button class="button" onclick="openSpreadsheet()">Abrir formularios</button>
+    </div>
+
+    <script>
+        function openSpreadsheet() {
+            window.open('https://docs.google.com/spreadsheets/d/1HQcCrgvy-gQph_XlRxPsnmz5AOsvMernCkwfhx8gJ30/edit?usp=sharing', '_blank');
+        }
+    </script>
+</body>
+</html>
