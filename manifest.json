@@ -1,7 +1,7 @@
 {
     "name": "AMJEST",
     "short_name": "AMJEST",
-    "start_url": "/amjest/index.html",
+    "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#1A2A38",
     "theme_color": "#1A2A38",
