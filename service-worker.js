@@ -1,48 +1,16 @@
-const CACHE_NAME = 'amjest-cache-v1';
-const urlsToCache = [
-    '/',
-    '/index.html',
-    '/styles/styles.css',
-    '/img/amjest-logo3.png',
-    '/manifest.json',
-    // Add any other assets you want to cache (e.g., images, JS files)
-];
+// Service Worker - No caching, no offline support
 
-// Install service worker and cache essential assets
+// Install service worker but don't cache anything
 self.addEventListener('install', (event) => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then((cache) => {
-                console.log('Caching essential files');
-                return cache.addAll(urlsToCache);
-            })
-    );
+    self.skipWaiting(); // Skip waiting to activate the service worker immediately
 });
 
-// Fetch assets from cache first, then fallback to network if not cached
+// Intercept network requests and always fetch from the network (no cache)
 self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request)
-            .then((response) => {
-                // Return the cached response if available, otherwise fetch from the network
-                return response || fetch(event.request);
-            })
-    );
+    event.respondWith(fetch(event.request)); // Always fetch from the network
 });
 
-// Activate service worker and clean up old caches
+// Activate service worker
 self.addEventListener('activate', (event) => {
-    const cacheWhitelist = [CACHE_NAME];
-    event.waitUntil(
-        caches.keys().then((cacheNames) => {
-            return Promise.all(
-                cacheNames.map((cacheName) => {
-                    if (cacheWhitelist.indexOf(cacheName) === -1) {
-                        // Delete old caches that are no longer needed
-                        return caches.delete(cacheName);
-                    }
-                })
-            );
-        })
-    );
+    self.clients.claim(); // Take control of all clients immediately
 });
