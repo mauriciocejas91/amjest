@@ -9,17 +9,17 @@
     <meta name="theme-color" content="#1A2A38">
 </head>
 <script>
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js', {
-            scope: '/'
-        })
-        .then((registration) => {
-            console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch((error) => {
-            console.error('Service Worker registration failed:', error);
-        });
-    }
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch((error) => {
+                console.log('Service Worker registration failed:', error);
+            });
+    });
+}
 </script>
 <body>
     <div class="container">
@@ -33,9 +33,6 @@
         function openSpreadsheet() {
             window.open('https://docs.google.com/spreadsheets/d/1HQcCrgvy-gQph_XlRxPsnmz5AOsvMernCkwfhx8gJ30/edit?usp=sharing', '_blank');
         }
-        function openSpreadsheet() {
-        window.open('https://docs.google.com/spreadsheets/d/1HQcCrgvy-gQph_XlRxPsnmz5AOsvMernCkwfhx8gJ30/edit?usp=sharing', '_blank');
-    }
     </script>
 </body>
 </html>
