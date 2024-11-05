@@ -8,12 +8,12 @@
     "description": "Acceda a los formularios de contenidos mínimos prioritarios.",
     "icons": [
         {
-            "src": "/amjest/img/amjest-logo3-192x192.png",
+            "src": "/img/amjest-logo3-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/amjest/img/amjest-logo3-192x192.png",
+            "src": "/img/amjest-logo3-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
