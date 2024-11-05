@@ -4,25 +4,27 @@ const urlsToCache = [
     '/index.html',
     '/styles/styles.css',
     '/img/amjest-logo3.png',
+    '/manifest.json',
     // Add any other assets you want to cache
 ];
 
-// Install service worker
+// Install service worker and cache assets
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
+                console.log('Service Worker: Caching files');
                 return cache.addAll(urlsToCache);
             })
     );
 });
 
-// Fetch assets from cache
+// Fetch assets from cache (fallback to network if not found in cache)
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
             .then((response) => {
-                return response || fetch(event.request);
+                return response || fetch(event.request);  // Return cached or fetch
             })
     );
 });
@@ -35,7 +37,7 @@ self.addEventListener('activate', (event) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
                     if (cacheWhitelist.indexOf(cacheName) === -1) {
-                        return caches.delete(cacheName);
+                        return caches.delete(cacheName);  // Delete outdated caches
                     }
                 })
             );
