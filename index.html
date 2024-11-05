@@ -8,6 +8,19 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#1A2A38">
 </head>
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js', {
+            scope: '/'
+        })
+        .then((registration) => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+            console.error('Service Worker registration failed:', error);
+        });
+    }
+</script>
 <body>
     <div class="container">
         <img src="img/amjest-logo3.png" alt="AMJEST Logo" class="logo">
@@ -22,17 +35,6 @@
         }
         function openSpreadsheet() {
         window.open('https://docs.google.com/spreadsheets/d/1HQcCrgvy-gQph_XlRxPsnmz5AOsvMernCkwfhx8gJ30/edit?usp=sharing', '_blank');
-    }
-
-    // Register service worker
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('service-worker.js').then(function (registration) {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function (error) {
-                console.log('ServiceWorker registration failed: ', error);
-            });
-        });
     }
     </script>
 </body>
