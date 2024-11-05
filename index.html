@@ -20,6 +20,20 @@
         function openSpreadsheet() {
             window.open('https://docs.google.com/spreadsheets/d/1HQcCrgvy-gQph_XlRxPsnmz5AOsvMernCkwfhx8gJ30/edit?usp=sharing', '_blank');
         }
+        function openSpreadsheet() {
+        window.open('https://docs.google.com/spreadsheets/d/1HQcCrgvy-gQph_XlRxPsnmz5AOsvMernCkwfhx8gJ30/edit?usp=sharing', '_blank');
+    }
+
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('service-worker.js').then(function (registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (error) {
+                console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+    }
     </script>
 </body>
 </html>
