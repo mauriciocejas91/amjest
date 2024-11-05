@@ -9,19 +9,17 @@
     <meta name="theme-color" content="#1A2A38">
 </head>
 <script>
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/amjest/service-worker.js', {
-            scope: '/amjest/'  // Limit the scope to the /amjest/ subdirectory
-        })
-            .then((registration) => {
-                console.log('Service Worker registered with scope:', registration.scope);
-            })
-            .catch((error) => {
-                console.log('Service Worker registration failed:', error);
-            });
-    });
-}
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/amjest/service-worker.js', { scope: '/amjest/' })
+                .then((registration) => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch((error) => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        });
+    }
 </script>
 <body>
     <div class="container">
